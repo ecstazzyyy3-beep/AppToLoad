@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - AppToLoad</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-download"></i>
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <span>AppToLoad</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html"><i class="fas fa-home"></i> Главная</a>
+                    <a href="../index.html#games"><i class="fas fa-gamepad"></i> Игры</a>
+                    <a href="premium.html"><i class="fas fa-crown"></i> Премиум</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page">
+            <div class="profile-header">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2 id="profile-title">Профиль пользователя</h2>
+            </div>
+
+            <div id="profile-content">
+                <!-- Профиль загружается через JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>AppToLoad inc. Все права защищены. <span id="current-year">2024</span></p>
+                <p class="footer-fixed">AppToLoad inc. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProfile();
+        });
+
+        function loadProfile() {
+            const user = JSON.parse(localStorage.getItem('apptoload_user'));
+            const profileContent = document.getElementById('profile-content');
+            
+            if (!user) {
+                profileContent.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h3>Вы не авторизованы</h3>
+                        <p>Пожалуйста, войдите в систему</p>
+                        <a href="login.html" class="btn">Войти</a>
+                    </div>
+                `;
+                return;
+            }
+
+            profileContent.innerHTML = `
+                <div class="form-group">
+                    <label for="profile-name">Имя</label>
+                    <input type="text" id="profile-name" value="${user.name}">
+                </div>
+                <div class="form-group">
+                    <label for="profile-email">Email</label>
+                    <input type="email" id="profile-email" value="${user.email}">
+                </div>
+                <div class="form-group">
+                    <label>Дата регистрации</label>
+                    <input type="text" value="${new Date(user.joinDate).toLocaleDateString()}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Скачано игр</label>
+                    <input type="text" value="${user.downloads}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Статус аккаунта</label>
+                    <input type="text" value="${user.premium ? 'Премиум' : 'Базовый'}" disabled>
+                </div>
+                <button class="btn btn-block" onclick="updateProfile()">Сохранить изменения</button>
+            `;
+            
+            document.getElementById('profile-title').textContent = `Профиль: ${user.name}`;
+        }
+    </script>
+</body>
+</html>

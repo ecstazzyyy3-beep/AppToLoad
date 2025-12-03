@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppToLoad - Легальный загрузчик игр</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-download"></i>
+                    <span>AppToLoad</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Поиск игр...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="active"><i class="fas fa-home"></i> Главная</a>
+                    <a href="#games"><i class="fas fa-gamepad"></i> Игры</a>
+                    <a href="#virus-total"><i class="fas fa-shield-alt"></i> Virus Total</a>
+                    <a href="pages/premium.html"><i class="fas fa-crown"></i> Премиум</a>
+                    <a href="pages/login.html" class="login-btn"><i class="fas fa-user"></i> Войти</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Рекламный баннер -->
+    <div class="ad-banner" id="ad-banner">
+        <div class="container">
+            <span class="ad-text">Реклама</span>
+            <span>Специальное предложение! Скачивайте игры быстрее!</span>
+            <button class="ad-close" onclick="closeAd()">×</button>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Приветственная секция -->
+        <section class="hero">
+            <h1>Легальный загрузчик игр</h1>
+            <p>Безопасные загрузки с проверкой Virus Total</p>
+            <div class="stats">
+                <div class="stat">
+                    <i class="fas fa-check-circle"></i>
+                    <span>100% Безопасно</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-bolt"></i>
+                    <span>Быстрая загрузка</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span>1M+ Пользователей</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Virus Total интеграция -->
+        <section class="virus-total-section" id="virus-total">
+            <h2><i class="fas fa-shield-alt"></i> Проверка безопасности Virus Total</h2>
+            <div class="virus-total-widget">
+                <div class="vt-header">
+                    <img src="https://www.virustotal.com/gui/images/vt-enterprise.svg" alt="Virus Total">
+                    <h3>Проверка файлов</h3>
+                </div>
+                <div class="vt-input">
+                    <input type="text" id="file-url" placeholder="Введите URL файла для проверки...">
+                    <button onclick="checkFile()">Проверить</button>
+                </div>
+                <div class="vt-results" id="vt-results">
+                    <div class="vt-status safe">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Файл безопасен. 0/70 антивирусов обнаружили угрозы</p>
+                    </div>
+                    <div class="vt-details">
+                        <h4>Детали проверки:</h4>
+                        <ul>
+                            <li>Дата проверки: <span id="scan-date">-</span></li>
+                            <li>Размер файла: <span id="file-size">-</span></li>
+                            <li>Хеш SHA-256: <span id="file-hash">-</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Список игр -->
+        <section class="games-section" id="games">
+            <h2><i class="fas fa-gamepad"></i> Популярные игры</h2>
+            <div class="games-grid" id="games-grid">
+                <!-- Игры загружаются через JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AppToLoad</h3>
+                    <p>Легальный загрузчик игр для всех платформ</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Ссылки</h3>
+                    <a href="#">О нас</a>
+                    <a href="#">Контакты</a>
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Платформы</h3>
+                    <a href="#"><i class="fab fa-android"></i> Android</a>
+                    <a href="#"><i class="fab fa-apple"></i> iOS</a>
+                    <a href="#"><i class="fab fa-windows"></i> Windows</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>AppToLoad inc. Все права защищены. <span id="current-year">2024</span></p>
+                <p class="footer-fixed">AppToLoad inc. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

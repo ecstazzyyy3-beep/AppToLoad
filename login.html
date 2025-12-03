@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - AppToLoad</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-download"></i>
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <span>AppToLoad</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html"><i class="fas fa-home"></i> Главная</a>
+                    <a href="../index.html#games"><i class="fas fa-gamepad"></i> Игры</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('login')">Вход</button>
+                <button class="tab-btn" onclick="showTab('register')">Регистрация</button>
+            </div>
+
+            <!-- Форма входа -->
+            <div id="login-form" class="tab-content">
+                <h2>Вход в аккаунт</h2>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Введите ваш email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" placeholder="Введите пароль">
+                </div>
+                <button class="btn btn-block" onclick="loginUser()">Войти</button>
+            </div>
+
+            <!-- Форма регистрации -->
+            <div id="register-form" class="tab-content" style="display: none;">
+                <h2>Регистрация</h2>
+                <div class="form-group">
+                    <label for="reg-name">Имя</label>
+                    <input type="text" id="reg-name" placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" placeholder="Введите email">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Пароль</label>
+                    <input type="password" id="reg-password" placeholder="Создайте пароль">
+                </div>
+                <button class="btn btn-block" onclick="registerUser()">Зарегистрироваться</button>
+                <p style="margin-top: 20px; color: var(--gray-color); font-size: 14px;">
+                    * Регистрация работает через localStorage. В реальном приложении нужен сервер.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>AppToLoad inc. Все права защищены. <span id="current-year">2024</span></p>
+                <p class="footer-fixed">AppToLoad inc. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        function showTab(tabName) {
+            // Скрыть все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Убрать активный класс со всех кнопок
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Показать выбранную вкладку
+            document.getElementById(tabName + '-form').style.display = 'block';
+            
+            // Сделать кнопку активной
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
